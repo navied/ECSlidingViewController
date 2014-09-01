@@ -450,6 +450,12 @@
     self.animationComplete = complete;
     [self.view endEditing:YES];
     ECSlidingViewControllerOperation operation = [self operationFromPosition:self.currentTopViewPosition toPosition:position];
+    if (![self operationIsValid:operation]){
+        _isInteractive = NO;
+        if (self.animationComplete) self.animationComplete();
+        self.animationComplete = nil;
+        return;
+    }
     [self animateOperation:operation];
 }
 
