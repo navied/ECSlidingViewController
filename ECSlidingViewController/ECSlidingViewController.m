@@ -869,6 +869,14 @@
     [self setNeedsStatusBarAppearanceUpdate];
 }
 
+- (UIView *)viewForKey:(NSString *)key {
+    return nil;
+}
+
+- (CGAffineTransform)targetTransform {
+    return CGAffineTransformIdentity;
+}
+
 - (UIViewController *)viewControllerForKey:(NSString *)key {
     if ([key isEqualToString:ECTransitionContextTopViewControllerKey]) {
         return self.topViewController;
